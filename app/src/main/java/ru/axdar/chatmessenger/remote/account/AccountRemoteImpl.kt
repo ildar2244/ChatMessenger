@@ -30,13 +30,11 @@ class AccountRemoteImpl @Inject constructor(
         userDate: Long
     ): Map<String, String> {
         val map = HashMap<String, String>()
-        map.apply {
-            put(ApiService.PARAM_EMAIL, email)
-            put(ApiService.PARAM_NAME, name)
-            put(ApiService.PARAM_PASSWORD, password)
-            put(ApiService.PARAM_TOKEN, token)
-            put(ApiService.PARAM_USER_DATE, userDate.toString())
-        }
+        map[ApiService.PARAM_EMAIL] = email
+        map[ApiService.PARAM_NAME] = name
+        map[ApiService.PARAM_PASSWORD] = password
+        map[ApiService.PARAM_TOKEN] = token
+        map[ApiService.PARAM_USER_DATE] = userDate.toString()
         return map
     }
 }
