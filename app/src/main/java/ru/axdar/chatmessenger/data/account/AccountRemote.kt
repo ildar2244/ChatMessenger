@@ -1,8 +1,9 @@
 package ru.axdar.chatmessenger.data.account
 
+import ru.axdar.chatmessenger.domain.account.AccountEntity
 import ru.axdar.chatmessenger.domain.type.Either
 import ru.axdar.chatmessenger.domain.type.None
-import ru.axdar.chatmessenger.domain.type.exception.Failure
+import ru.axdar.chatmessenger.domain.type.Failure
 
 interface AccountRemote {
     fun register(
@@ -12,4 +13,8 @@ interface AccountRemote {
         token: String,
         userDate: Long
     ): Either<Failure, None>
+
+    fun login(email: String, password: String, token: String): Either<Failure, AccountEntity>
+
+    fun updateToken(userId: Long, token: String, oldToken: String): Either<Failure, None>
 }
