@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName
 
 class AccountEntity(
     @SerializedName("user_id")
-    val id: String,
+    val id: Long,
     val name: String,
     val email: String,
     @SerializedName("token")
