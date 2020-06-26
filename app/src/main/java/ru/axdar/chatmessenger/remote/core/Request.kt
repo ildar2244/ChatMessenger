@@ -3,7 +3,7 @@ package ru.axdar.chatmessenger.remote.core
 import retrofit2.Call
 import retrofit2.Response
 import ru.axdar.chatmessenger.domain.type.Either
-import ru.axdar.chatmessenger.domain.type.exception.Failure
+import ru.axdar.chatmessenger.domain.type.Failure
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -40,6 +40,8 @@ fun <T : BaseResponse> Response<T>.parseError(): Failure {
     val message = (body() as BaseResponse).message
     return when(message) {
         "email already exists" -> Failure.EmailAlreadyExistError
+        "error in email or password" -> Failure.AuthError
+        "Token is invalid" -> Failure.TokenError
         else -> Failure.ServerError
     }
 }
