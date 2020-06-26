@@ -3,7 +3,7 @@ package ru.axdar.chatmessenger.presentation.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import ru.axdar.chatmessenger.domain.type.HandleOnce
-import ru.axdar.chatmessenger.domain.type.exception.Failure
+import ru.axdar.chatmessenger.domain.type.Failure
 
 abstract class BaseViewModel : ViewModel() {
 
