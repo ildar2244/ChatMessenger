@@ -2,7 +2,7 @@ package ru.axdar.chatmessenger.domain.account
 
 import ru.axdar.chatmessenger.domain.type.Either
 import ru.axdar.chatmessenger.domain.type.None
-import ru.axdar.chatmessenger.domain.type.exception.Failure
+import ru.axdar.chatmessenger.domain.type.Failure
 
 interface AccountRepository {
     fun login(email: String, password: String): Either<Failure, AccountEntity>

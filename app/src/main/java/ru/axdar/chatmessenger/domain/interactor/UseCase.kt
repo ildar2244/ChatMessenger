@@ -2,7 +2,7 @@ package ru.axdar.chatmessenger.domain.interactor
 
 import kotlinx.coroutines.*
 import ru.axdar.chatmessenger.domain.type.Either
-import ru.axdar.chatmessenger.domain.type.exception.Failure
+import ru.axdar.chatmessenger.domain.type.Failure
 import kotlin.coroutines.CoroutineContext
 
 abstract class UseCase<out Type, in Params> {

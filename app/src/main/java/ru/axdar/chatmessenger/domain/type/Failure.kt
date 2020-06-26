@@ -1,4 +1,4 @@
-package ru.axdar.chatmessenger.domain.type.exception
+package ru.axdar.chatmessenger.domain.type
 
 /**
  * base class for handling errors
@@ -7,6 +7,10 @@ package ru.axdar.chatmessenger.domain.type.exception
 sealed class Failure {
     object NetworkConnectionError : Failure()
     object ServerError : Failure()
+    object AuthError : Failure()
+    object TokenError : Failure()
 
     object EmailAlreadyExistError : Failure()
+
+    object NoSavedAccountError : Failure()
 }

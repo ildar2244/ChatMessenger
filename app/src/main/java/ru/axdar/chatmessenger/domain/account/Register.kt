@@ -3,7 +3,7 @@ package ru.axdar.chatmessenger.domain.account
 import ru.axdar.chatmessenger.domain.interactor.UseCase
 import ru.axdar.chatmessenger.domain.type.Either
 import ru.axdar.chatmessenger.domain.type.None
-import ru.axdar.chatmessenger.domain.type.exception.Failure
+import ru.axdar.chatmessenger.domain.type.Failure
 import javax.inject.Inject
 
 class Register @Inject constructor(
