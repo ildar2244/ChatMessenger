@@ -1,4 +1,4 @@
-package ru.axdar.chatmessenger.ui.service
+package ru.axdar.chatmessenger.ui.firebase
 
 import android.util.Log
 import com.google.firebase.messaging.FirebaseMessagingService

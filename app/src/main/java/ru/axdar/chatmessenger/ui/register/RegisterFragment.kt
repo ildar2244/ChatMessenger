@@ -1,14 +1,16 @@
-package ru.axdar.chatmessenger.ui.fragment
+package ru.axdar.chatmessenger.ui.register
 
 import android.os.Bundle
 import android.view.View
 import kotlinx.android.synthetic.main.fragment_register.*
 import ru.axdar.chatmessenger.R
+import ru.axdar.chatmessenger.domain.account.AccountEntity
 import ru.axdar.chatmessenger.domain.type.None
 import ru.axdar.chatmessenger.presentation.viewmodel.AccountViewModel
 import ru.axdar.chatmessenger.ui.App
-import ru.axdar.chatmessenger.ui.ext.onFailure
-import ru.axdar.chatmessenger.ui.ext.onSuccess
+import ru.axdar.chatmessenger.ui.core.BaseFragment
+import ru.axdar.chatmessenger.ui.core.ext.onFailure
+import ru.axdar.chatmessenger.ui.core.ext.onSuccess
 
 class RegisterFragment : BaseFragment() {
 
@@ -24,6 +26,7 @@ class RegisterFragment : BaseFragment() {
 
         accountViewModel = viewModel {
             onSuccess(registerData, ::handleRegister)
+            onSuccess(accountData, ::handleLogin)
             onFailure(failureData, ::handleFailure)
         }
     }
@@ -33,6 +36,10 @@ class RegisterFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         btnNewMemberShip.setOnClickListener { register() }
+
+        btnAlreadyHaveAkk.setOnClickListener {
+            activity?.finish()
+        }
     }
 
     private fun validateFields(): Boolean {
@@ -67,8 +74,15 @@ class RegisterFragment : BaseFragment() {
         }
     }
 
-    private fun handleRegister(none: None? = None()) {
+    private fun handleLogin(accountEntity: AccountEntity?) {
         hideProgress()
-        showMessage("Аккаунт создан")
+        activity?.let {
+            navigator.showHome(it)
+            it.finish()
+        }
+    }
+
+    private fun handleRegister(none: None? = None()) {
+        accountViewModel.login(etEmail.text.toString(), etPassword.text.toString())
     }
 }

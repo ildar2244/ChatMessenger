@@ -1,4 +1,4 @@
-package ru.axdar.chatmessenger.ui.fragment
+package ru.axdar.chatmessenger.ui.core
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import ru.axdar.chatmessenger.R
-import ru.axdar.chatmessenger.domain.type.exception.Failure
-import ru.axdar.chatmessenger.ui.activity.BaseActivity
-import ru.axdar.chatmessenger.ui.activity.base
+import ru.axdar.chatmessenger.domain.type.Failure
+import ru.axdar.chatmessenger.ui.core.navigation.Navigator
 import javax.inject.Inject
 
 abstract class BaseFragment : Fragment() {
@@ -23,6 +22,9 @@ abstract class BaseFragment : Fragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var navigator: Navigator
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
