@@ -4,8 +4,10 @@ import dagger.Module
 import dagger.Provides
 import ru.axdar.chatmessenger.BuildConfig
 import ru.axdar.chatmessenger.data.account.AccountRemote
+import ru.axdar.chatmessenger.data.friends.FriendsRemote
 import ru.axdar.chatmessenger.remote.account.AccountRemoteImpl
 import ru.axdar.chatmessenger.remote.core.Request
+import ru.axdar.chatmessenger.remote.friends.FriendsRemoteImpl
 import ru.axdar.chatmessenger.remote.service.ApiService
 import ru.axdar.chatmessenger.remote.service.ServiceFactory
 import javax.inject.Singleton
@@ -21,5 +23,11 @@ class RemoteModule {
     @Provides
     fun provideAccountRemote(request: Request, apiService: ApiService): AccountRemote {
         return AccountRemoteImpl(request, apiService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideFriendsRemote(request: Request, apiService: ApiService): FriendsRemote {
+        return FriendsRemoteImpl(request, apiService)
     }
 }
