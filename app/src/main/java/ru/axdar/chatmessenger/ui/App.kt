@@ -10,6 +10,8 @@ import ru.axdar.chatmessenger.ui.core.navigation.RouteActivity
 import ru.axdar.chatmessenger.ui.register.RegisterActivity
 import ru.axdar.chatmessenger.ui.register.RegisterFragment
 import ru.axdar.chatmessenger.ui.firebase.FirebaseService
+import ru.axdar.chatmessenger.ui.friends.FriendRequestsFragment
+import ru.axdar.chatmessenger.ui.friends.FriendsFragment
 import ru.axdar.chatmessenger.ui.home.ChatsFragment
 import ru.axdar.chatmessenger.ui.home.HomeActivity
 import ru.axdar.chatmessenger.ui.login.LoginFragment
@@ -47,6 +49,8 @@ interface AppComponent {
     fun inject(fragment: RegisterFragment)
     fun inject(fragment: LoginFragment)
     fun inject(fragment: ChatsFragment)
+    fun inject(fragment: FriendsFragment)
+    fun inject(fragment: FriendRequestsFragment)
 
     //services
     fun inject(service: FirebaseService)
