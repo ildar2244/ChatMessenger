@@ -1,4 +1,4 @@
-package ru.axdar.chatmessenger.domain.type.friends
+package ru.axdar.chatmessenger.domain.friends
 
 import ru.axdar.chatmessenger.domain.type.Either
 import ru.axdar.chatmessenger.domain.type.Failure
