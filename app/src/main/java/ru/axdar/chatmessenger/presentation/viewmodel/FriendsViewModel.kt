@@ -1,6 +1,7 @@
 package ru.axdar.chatmessenger.presentation.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import ru.axdar.chatmessenger.domain.friends.*
 import ru.axdar.chatmessenger.domain.type.None
 import ru.axdar.chatmessenger.domain.type.friends.*
 import javax.inject.Inject

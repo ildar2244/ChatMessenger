@@ -9,7 +9,7 @@ import ru.axdar.chatmessenger.data.account.AccountRepositoryImpl
 import ru.axdar.chatmessenger.data.friends.FriendsRemote
 import ru.axdar.chatmessenger.data.friends.FriendsRepositoryImpl
 import ru.axdar.chatmessenger.domain.account.AccountRepository
-import ru.axdar.chatmessenger.domain.type.friends.FriendsRepository
+import ru.axdar.chatmessenger.domain.friends.FriendsRepository
 import javax.inject.Singleton
 
 @Module

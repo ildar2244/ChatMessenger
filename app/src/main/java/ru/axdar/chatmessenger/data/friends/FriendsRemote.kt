@@ -3,7 +3,7 @@ package ru.axdar.chatmessenger.data.friends
 import ru.axdar.chatmessenger.domain.type.Either
 import ru.axdar.chatmessenger.domain.type.Failure
 import ru.axdar.chatmessenger.domain.type.None
-import ru.axdar.chatmessenger.domain.type.friends.FriendEntity
+import ru.axdar.chatmessenger.domain.friends.FriendEntity
 
 interface FriendsRemote {
     fun getFriends(userId: Long, token: String): Either<Failure, List<FriendEntity>>

@@ -4,7 +4,7 @@ import ru.axdar.chatmessenger.data.friends.FriendsRemote
 import ru.axdar.chatmessenger.domain.type.Either
 import ru.axdar.chatmessenger.domain.type.Failure
 import ru.axdar.chatmessenger.domain.type.None
-import ru.axdar.chatmessenger.domain.type.friends.FriendEntity
+import ru.axdar.chatmessenger.domain.friends.FriendEntity
 import ru.axdar.chatmessenger.remote.core.Request
 import ru.axdar.chatmessenger.remote.service.ApiService
 import javax.inject.Inject

@@ -5,8 +5,8 @@ import ru.axdar.chatmessenger.domain.type.Either
 import ru.axdar.chatmessenger.domain.type.Failure
 import ru.axdar.chatmessenger.domain.type.None
 import ru.axdar.chatmessenger.domain.type.flatMap
-import ru.axdar.chatmessenger.domain.type.friends.FriendEntity
-import ru.axdar.chatmessenger.domain.type.friends.FriendsRepository
+import ru.axdar.chatmessenger.domain.friends.FriendEntity
+import ru.axdar.chatmessenger.domain.friends.FriendsRepository
 
 class FriendsRepositoryImpl(
     private val accountCache: AccountCache,
