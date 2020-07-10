@@ -18,6 +18,7 @@ class SharedPrefsManager @Inject constructor(
         const val ACCOUNT_STATUS = "account_status"
         const val ACCOUNT_DATE = "account_date"
         const val ACCOUNT_IMAGE = "account_image"
+        const val ACCOUNT_PASSWORD = "account_password"
     }
 
     fun saveToken(token: String): Either<Failure, None> {
@@ -32,15 +33,16 @@ class SharedPrefsManager @Inject constructor(
         return Either.Right(prefs.getString(ACCOUNT_TOKEN, "")!!)
     }
 
-    fun saveAccount(accountEntity: AccountEntity): Either<Failure, None> {
+    fun saveAccount(account: AccountEntity): Either<Failure, None> {
         prefs.edit().apply {
-            putLong(ACCOUNT_ID, accountEntity.id)
-            putString(ACCOUNT_NAME, accountEntity.name)
-            putString(ACCOUNT_EMAIL, accountEntity.email)
-            putString(ACCOUNT_TOKEN, accountEntity.token)
-            putString(ACCOUNT_STATUS, accountEntity.status)
-            putLong(ACCOUNT_DATE, accountEntity.userDate)
-            putString(ACCOUNT_IMAGE, accountEntity.image)
+            putLong(ACCOUNT_ID, account.id)
+            putString(ACCOUNT_NAME, account.name)
+            putString(ACCOUNT_EMAIL, account.email)
+            putString(ACCOUNT_TOKEN, account.token)
+            putString(ACCOUNT_STATUS, account.status)
+            putLong(ACCOUNT_DATE, account.userDate)
+            putString(ACCOUNT_IMAGE, account.image)
+            putString(ACCOUNT_PASSWORD, account.password)
         }.apply()
 
         return Either.Right(None())
@@ -59,7 +61,8 @@ class SharedPrefsManager @Inject constructor(
             prefs.getString(ACCOUNT_TOKEN, "")!!,
             prefs.getString(ACCOUNT_STATUS, "")!!,
             prefs.getLong(ACCOUNT_DATE, 0),
-            prefs.getString(ACCOUNT_IMAGE, "")!!
+            prefs.getString(ACCOUNT_IMAGE, "")!!,
+            prefs.getString(ACCOUNT_PASSWORD, "")!!
         )
 
         return Either.Right(account)
@@ -74,6 +77,7 @@ class SharedPrefsManager @Inject constructor(
             remove(ACCOUNT_STATUS)
             remove(ACCOUNT_DATE)
             remove(ACCOUNT_IMAGE)
+            remove(ACCOUNT_PASSWORD)
         }.apply()
 
         return Either.Right(None())
@@ -83,4 +87,14 @@ class SharedPrefsManager @Inject constructor(
         val id = prefs.getLong(ACCOUNT_ID, 0)
         return id != 0L
     }
+}
+
+fun SharedPreferences.Editor.putSafely(key: String, value: Long?) {
+    if (value != null && value != 0L)
+        putLong(key, value)
+}
+
+fun SharedPreferences.Editor.putSafely(key: String, value: String?) {
+    if (value != null && value.isNotEmpty())
+        putString(key, value)
 }
