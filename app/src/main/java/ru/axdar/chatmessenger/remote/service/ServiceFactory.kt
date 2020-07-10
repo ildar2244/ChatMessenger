@@ -5,10 +5,12 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.axdar.chatmessenger.BuildConfig
 import java.util.concurrent.TimeUnit
 
 object ServiceFactory {
-    const val BASE_URL = "http://z917915l.beget.tech/rest_api/"
+    private val SERVER_URL = BuildConfig.server_url
+    private val BASE_URL = "$SERVER_URL/rest_api/"
 
     fun makeService(isDebug: Boolean): ApiService {
         val okHttpClient = makeOkHttpClient(

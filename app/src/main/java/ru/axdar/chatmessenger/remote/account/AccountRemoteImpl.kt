@@ -7,7 +7,9 @@ import ru.axdar.chatmessenger.domain.type.None
 import ru.axdar.chatmessenger.domain.type.Failure
 import ru.axdar.chatmessenger.remote.core.Request
 import ru.axdar.chatmessenger.remote.service.ApiService
+import java.util.*
 import javax.inject.Inject
+import kotlin.collections.HashMap
 
 class AccountRemoteImpl @Inject constructor(
     private val request: Request,
@@ -33,6 +35,19 @@ class AccountRemoteImpl @Inject constructor(
 
     override fun updateToken(userId: Long, token: String, oldToken: String): Either<Failure, None> {
         return request.make(service.updateToken(createUpdateTokenMap(userId, token, oldToken))) { None() }
+    }
+
+    override fun editUser(
+        userId: Long,
+        email: String,
+        name: String,
+        password: String,
+        status: String,
+        token: String,
+        image: String
+    ): Either<Failure, AccountEntity> {
+        return request.make(service.editUser(createUserEditMap(userId, email, name,
+            password, status, token, image))) { it.user }
     }
 
     private fun createRegisterMap(
@@ -64,6 +79,31 @@ class AccountRemoteImpl @Inject constructor(
         map[ApiService.PARAM_USER_ID] = userId.toString()
         map[ApiService.PARAM_TOKEN] = token
         map[ApiService.PARAM_OLD_TOKEN] = oldToken
+        return map
+    }
+
+    private fun createUserEditMap(
+        id: Long,
+        email: String,
+        name: String,
+        password: String,
+        status: String,
+        token: String,
+        image: String
+    ): Map<String, String> {
+        val map = HashMap<String, String>()
+        map[ApiService.PARAM_USER_ID] = id.toString()
+        map[ApiService.PARAM_EMAIL] = email
+        map[ApiService.PARAM_NAME] = name
+        map[ApiService.PARAM_PASSWORD] = password
+        map[ApiService.PARAM_STATUS] = status
+        map[ApiService.PARAM_TOKEN] = token
+        if (image.startsWith("../")) {
+            map[ApiService.PARAM_IMAGE_UPLOADED] = image
+        } else {
+            map[ApiService.PARAM_IMAGE_NEW] = image
+            map[ApiService.PARAM_IMAGE_NEW_NAME] = "user_${id}_${Date().time}_photo"
+        }
         return map
     }
 }
