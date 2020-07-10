@@ -7,6 +7,7 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import ru.axdar.chatmessenger.presentation.viewmodel.AccountViewModel
 import ru.axdar.chatmessenger.presentation.viewmodel.FriendsViewModel
+import ru.axdar.chatmessenger.presentation.viewmodel.MediaViewModel
 import ru.axdar.chatmessenger.presentation.viewmodel.ViewModelFactory
 
 @Module
@@ -24,4 +25,9 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(FriendsViewModel::class)
     abstract fun bindFriendsViewModel(friendsViewModel: FriendsViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MediaViewModel::class)
+    abstract fun bindMediaViewModel(mediaViewModel: MediaViewModel): ViewModel
 }

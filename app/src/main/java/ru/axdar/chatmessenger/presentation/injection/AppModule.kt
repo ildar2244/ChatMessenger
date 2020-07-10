@@ -8,8 +8,10 @@ import ru.axdar.chatmessenger.data.account.AccountRemote
 import ru.axdar.chatmessenger.data.account.AccountRepositoryImpl
 import ru.axdar.chatmessenger.data.friends.FriendsRemote
 import ru.axdar.chatmessenger.data.friends.FriendsRepositoryImpl
+import ru.axdar.chatmessenger.data.media.MediaRepositoryImpl
 import ru.axdar.chatmessenger.domain.account.AccountRepository
 import ru.axdar.chatmessenger.domain.friends.FriendsRepository
+import ru.axdar.chatmessenger.domain.media.MediaRepository
 import javax.inject.Singleton
 
 @Module
@@ -29,5 +31,11 @@ class AppModule(private val context: Context) {
     @Singleton
     fun provideFriendsRepository(remote: FriendsRemote, accountCache: AccountCache): FriendsRepository {
         return FriendsRepositoryImpl(accountCache, remote)
+    }
+
+    @Provides
+    @Singleton
+    fun provideMediaRepository(context: Context): MediaRepository {
+        return MediaRepositoryImpl(context)
     }
 }
